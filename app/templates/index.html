@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Генератор объявлений о недвижимости</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .border-dashed { border-style: dashed !important; }
+        .drop-zone { transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; cursor: pointer;}
+        .drop-zone:hover { background-color: #f8f9fa; }
+        .drop-zone.dragover { background-color: #e9ecef; border-color: #0d6efd !important; }
+        #result-image { max-height: 400px; object-fit: cover; }
+        #ad-text-area { min-height: 200px; font-family: monospace; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <main class="container my-5">
+        <div class="text-center">
+            <h1 class="display-5">Генератор объявлений</h1>
+        </div>
+
+        <!-- 1. ЗОНА ЗАГРУЗКИ (ВИДНА ПО УМОЛЧАНИЮ) -->
+        <div id="upload-zone" class="mt-4 p-5 text-center border border-2 border-dashed rounded-3 drop-zone">
+            <i class="bi bi-cloud-arrow-up-fill fs-1 text-secondary"></i>
+            <p class="mt-3 mb-1">Перетащите файл сюда или нажмите, чтобы выбрать</p>
+            <p class="text-muted small">(Рекомендуются изображения в хорошем качестве)</p>
+            <input type="file" id="file-input" accept="image/*" class="d-none">
+        </div>
+
+        <!-- 2. СПИННЕР ЗАГРУЗКИ (СКРЫТ ПО УМОЛЧАНИЮ) -->
+        <div id="loader" class="text-center my-5" style="display: none;">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Загрузка...</span>
+            </div>
+            <p class="mt-3">Анализируем изображение и пишем текст... Это может занять несколько минут.</p>
+        </div>
+
+        <!-- 3. ОБЛАСТЬ РЕЗУЛЬТАТА (СКРЫТА ПО УМОЛЧАНИЮ) -->
+        <div id="result-area" class="card shadow-sm mt-4" style="display: none;">
+            <div class="card-body">
+                <div class="row g-4">
+                    <!-- Левая колонка с изображением -->
+                    <div class="col-lg-5">
+                        <h5 class="mb-3">Ваше изображение:</h5>
+                        <img id="result-image" src="" alt="Загруженное изображение дома" class="img-fluid rounded border">
+                    </div>
+                    <!-- Правая колонка с результатами -->
+                    <div class="col-lg-7">
+                        <h5 class="mb-3">🔍 Извлеченные характеристики дома:</h5>
+                        <ul id="characteristics-list" class="list-group list-group-flush mb-4">
+                            <!-- Сюда JS добавит список характеристик -->
+                        </ul>
+
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0">✍️ Сгенерированное объявление:</h5>
+                            <button id="copy-button" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-clipboard"></i> Копировать
+                            </button>
+                        </div>
+                        <textarea id="ad-text-area" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button id="reset-button" class="btn btn-primary">Загрузить другое фото</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center my-4">
+            <p class="mb-2"><strong>Выберите стиль объявления:</strong></p>
+            <div class="btn-group" role="group" aria-label="Стили объявления">
+                <input type="radio" class="btn-check" name="style" id="style-brief" value="brief" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="style-brief">Краткий</label>
+
+                <input type="radio" class="btn-check" name="style" id="style-professional" value="professional" autocomplete="off">
+                <label class="btn btn-outline-primary" for="style-professional">Профессиональный</label>
+
+                <input type="radio" class="btn-check" name="style" id="style-social" value="social" autocomplete="off">
+                <label class="btn btn-outline-primary" for="style-social">Для соцсетей</label>
+            </div>
+        </div>
+
+        <div id="error-alert" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+            <strong><i class="bi bi-exclamation-triangle-fill"></i> Ошибка:</strong>
+            <span id="error-message">Здесь будет текст ошибки.</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
