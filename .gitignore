@@ -2,3 +2,10 @@ app/__pycache__/
 app/ml_model/__pycache__/
 app/routers/__pycache__/
 tests/__pycache__/
+
+# # Virtual Environments
+.env
+.venv
+venv/
+env/
+*_env/
