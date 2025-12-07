@@ -11,7 +11,7 @@ templates = Jinja2Templates(directory="app/templates")
 @router.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     """Отдает главную HTML-страницу."""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 @router.post("/generate-ad")
 async def generate_ad_task_endpoint(
