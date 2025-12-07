@@ -7,5 +7,8 @@ torch --index-url https://download.pytorch.org/whl/cpu
 https://github.com/sergey21000/llama-cpp-python-wheels/releases/download/v0.3.16-cpu/llama_cpp_python-0.3.16-cp312-cp312-linux_x86_64.whl
 huggingface-hub
 Pillow
+
+# Тестирование
 pytest
 httpx
+pytest-mock
