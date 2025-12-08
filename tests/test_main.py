@@ -23,7 +23,6 @@ def test_read_main_page():
     # 3. Проверка содержимого:
     assert "Генератор объявлений" in response.text
 
-
 # --- Тест-кейс №2 ---
 def test_submit_image_successfully(mocker):
     """
@@ -54,3 +53,26 @@ def test_submit_image_successfully(mocker):
     # Утверждаем, что в JSON-ответе есть ключ "task_id".
     data = response.json()
     assert "task_id" in data
+
+# --- Тест-кейс №3 ---
+def test_submit_wrong_file_type():
+    """
+    Тест проверяет, что сервер правильно отклоняет файлы, не являющиеся изображениями.
+    """
+    # 1. Действие:
+    # Открываем текстовый файл и отправляем его на сервер.
+    with open("tests/assets/fake_image.txt", "rb") as f:
+        response = client.post(
+            "/generate-ad",
+            data={"style": "brief"},
+            files={"image": ("fake_image.txt", f, "text/plain")}
+        )
+
+    # 2. Проверки (Asserts):
+    # Утверждаем, что сервер ответил кодом 400 (Bad Request).
+    assert response.status_code == 400
+    
+    # Утверждаем, что в JSON-ответе содержится правильное сообщение об ошибке.
+    data = response.json()
+    assert "detail" in data
+    assert data["detail"] == "Недопустимый тип файла."
