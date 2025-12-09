@@ -9,4 +9,6 @@ pinned: false
 
 # Автоматический генератор объявлений о недвижимости
 
+[![Test and Deploy](https://github.com/Eslonf/house_ad_generator/actions/workflows/ci.yml/badge.svg)](https://github.com/Eslonf/house_ad_generator/actions/workflows/ci.yml)
+
 Веб-приложение, которое использует две нейросетевые модели для автоматического создания рекламных объявлений на основе фотографий домов.
