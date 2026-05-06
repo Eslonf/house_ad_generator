@@ -35,7 +35,7 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git clone https://huggingface.co/spaces/Eslonf/house_ad_generator deploy
-          rsync -av --delete --exclude='.git/' --exclude='.github/' ./ deploy/
+          rsync -av --delete --exclude='.git/' --exclude='.github/' --exclude='deploy/' ./ deploy/
           cd deploy
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
