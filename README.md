@@ -33,8 +33,8 @@ pinned: false
 | Категория | Технология |
 | :--- | :--- |
 | **Язык** | **Python 3.12** |
-| **Бэкенд** | `FastAPI`, `Uvicorn` |
-| **Фронтенд** | `HTML`, `Bootstrap 5`, `JavaScript (Vanilla JS)` |
+| **Бэкенд (API)** | `FastAPI`, `Uvicorn` |
+| **Фронтенд (SPA)**| `Vue.js 3`, `Vite`, `Axios`, `Bootstrap 5` |
 | **ML Модели** | 1. VQA: [`Salesforce/blip-vqa-base`](https://huggingface.co/Salesforce/blip-vqa-base) <br> 2. LLM: [`unsloth/gemma-3-4b-it-GGUF`](https://huggingface.co/unsloth/gemma-3-4b-it-GGUF) |
-| **Основные библиотеки** | `Transformers`, `llama-cpp-python`, `PyTorch` |
-| **CI/CD и Тестирование** | `GitHub Actions`, `Pytest`, `Docker` |
+| **Библиотеки** | `Transformers`, `llama-cpp-python`, `PyTorch` |
+| **DevOps** | `GitHub Actions`, `Pytest`, `Docker` (Multi-stage build) |
