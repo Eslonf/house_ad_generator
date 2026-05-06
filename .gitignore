@@ -1,7 +1,9 @@
-app/__pycache__/
-app/ml_model/__pycache__/
-app/routers/__pycache__/
-tests/__pycache__/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.py[cod]
+.vscode/
+.pytest_cache/
 
 # # Virtual Environments
 .env
